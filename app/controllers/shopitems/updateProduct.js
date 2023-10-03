@@ -47,7 +47,7 @@ async function updateProduct(req, res) {
             })
         }
 
-        const data = await shopitems.updateOne({ _id: id }, { $set: { name, description, price, isInStock } });
+        const data = await shopitems.updateOne({ _id: id }, { $set: { name, description, price, isInStock, modifiedBy: req.decoded } });
 
         if (!data.modifiedCount) {
             return res.status(404).send({

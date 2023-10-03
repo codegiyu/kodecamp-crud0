@@ -43,7 +43,8 @@ async function createProduct(req, res) {
             name,
             description,
             price,
-            isInStock
+            isInStock,
+            createdBy: req.decoded
         });
 
         res.status(201).send({
