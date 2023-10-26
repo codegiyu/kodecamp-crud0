@@ -27,4 +27,6 @@ app.get("/", (req, res) => {
 app.use("/v1/auth", v1AuthRoute);
 app.use("/v1/shop", v1ShopRoute);
 
-app.listen(port, () => console.log("App started and lisening on port ", port))
+app.listen(port, () => console.log("App started and lisening on port ", port));
+
+module.exports = app;

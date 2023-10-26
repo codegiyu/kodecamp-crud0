@@ -5,42 +5,6 @@ async function register(req, res) {
     try {
         const { fullName, userName, password, role } = req.body;
 
-        if (!fullName || !userName || !password || !role) {
-            const errorObj = {};
-            const body = { fullName, userName, password, role }
-
-            for (let key in body) {
-                if (body[key] || body[key] === "") {
-                    errorObj[key] = `${key} must be available in request`
-                }
-            }
-
-            return res.status(400).send({
-                success: false,
-                error: errorObj,
-                message: "Shop item update failed due to missing fields"
-            })
-        }
-
-        if (typeof fullName !== "string" || typeof userName !== "string" || typeof password !== "string" || !["user", "admin"].includes(role)) {
-            const errorObj = {};
-            const body = { fullName, userName, password, role }
-
-            for (let key in body) {
-                if (key === "role" && !["user", "admin"].includes(role)) {
-                    errorObj["role"] = "role should be either 'user' or 'admin'"
-                } else if (typeof body[key] !== "string") {
-                    errorObj[key] = `${key} should be ${"string"}`
-                }
-            }
-
-            return res.status(400).send({
-                success: false,
-                error: errorObj,
-                message: "Shop item update failed due to datatype mismatch"
-            })
-        }
-
         const existingUserName = await users.findOne({ userName });
 
         if (existingUserName) {
