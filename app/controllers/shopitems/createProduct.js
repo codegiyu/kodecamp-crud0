@@ -12,7 +12,6 @@ async function createProduct(req, res) {
             isInStock,
             createdBy: req.decoded
         });
-        console.log(item)
 
         res.status(201).send({
             success: true,

@@ -4,7 +4,7 @@
   "description": "Very basic e-commerce express and mongodb app to learn the basics of building rest APIs",
   "main": "index.js",
   "scripts": {
-    "test": "npx jest --testTimeout 30000"
+    "test": "npx jest --testTimeout 15000 --forceExit"
   },
   "keywords": [
     "express",

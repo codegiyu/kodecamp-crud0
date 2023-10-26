@@ -14,8 +14,8 @@ mongoose.connect(mongoDB_URI, {
     useUnifiedTopology: true,
     useNewUrlParser: true
 })
-    .then(() => console.log("Database connected!"))
-    .catch((err) => console.log(`Error connecting to database! `, err));
+.then(() => console.log("Database connected!"))
+.catch((err) => console.log(`Error connecting to database! `, err));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -27,6 +27,6 @@ app.get("/", (req, res) => {
 app.use("/v1/auth", v1AuthRoute);
 app.use("/v1/shop", v1ShopRoute);
 
-app.listen(port, () => console.log("App started and lisening on port ", port));
+const server = app.listen(port, () => console.log("App started and lisening on port ", port));
 
-module.exports = app;
+module.exports = { app, server, mongoose };
